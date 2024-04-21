@@ -16,7 +16,7 @@ const ImageUploader:React.FC<ImageUploaderProps> = ({
     onRemove
 }) => {
 
-    const onUpload = (result:any) => {
+    const UploadFile = (result:any) => {
         onChange(result.info.secure_url)
     }
 
@@ -34,10 +34,10 @@ const ImageUploader:React.FC<ImageUploaderProps> = ({
                 </div>
                 ))}
             </div>
-            <CldUploadWidget uploadPreset="fjpmrrqt" onUpload={onUpload}>
+            <CldUploadWidget uploadPreset="fjpmrrqt" onSuccess={UploadFile}>
                 {({ open }) => {
                     return (
-                        <Button onClick={() => open()} className='bg-grey-1 text-white'>
+                        <Button onClick={(e) => {e.preventDefault();open();}} className='bg-grey-1 text-white'>
                             <Plus className='h-4 w-4 mr-2'/>
                             Upload Image
                         </Button>

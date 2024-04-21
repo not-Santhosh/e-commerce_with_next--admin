@@ -6,13 +6,7 @@ import Product from "@/lib/models/Product";
 import Collection from "@/lib/models/Collection";
 
 export const GET = async(req:NextRequest, {params}: {params: {productId: string}}) => {
-    try {
-        const {userId} = auth();
-
-        if (!userId) {
-            return new NextResponse("Unauthorized", {status: 401})
-        }
-        
+    try {        
         await connectToDB();
 
         const product = await Product.findById(params.productId).populate({path:"collections", model: Collection});
