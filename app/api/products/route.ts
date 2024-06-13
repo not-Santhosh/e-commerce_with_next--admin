@@ -1,4 +1,3 @@
-import { auth } from "@clerk/nextjs";
 import { NextRequest, NextResponse } from "next/server";
 
 import { connectToDB } from "@/lib/mongoDB";
@@ -7,10 +6,6 @@ import Collection from "@/lib/models/Collection";
 
 export const POST = async(req: NextRequest) => {
     try {
-        const {userId} = auth();
-        if(!userId) {
-            return new NextResponse("Unauthorized", {status: 401});
-        }
         await connectToDB();
 
         const {title, media, description, category, price, expense, collections, tags, size, color, } = await req.json();

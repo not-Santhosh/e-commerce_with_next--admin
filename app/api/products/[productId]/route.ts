@@ -1,4 +1,3 @@
-import { auth } from "@clerk/nextjs";
 import { NextRequest, NextResponse } from "next/server";
 
 import { connectToDB } from "@/lib/mongoDB";
@@ -20,12 +19,6 @@ export const GET = async(req:NextRequest, {params}: {params: {productId: string}
 
 export const DELETE = async(req: NextRequest, {params} : {params: {productId: string}}) => {
     try {
-        
-        const {userId} = auth();
-        
-        if (!userId) {
-            return new NextResponse("Unauthorized", {status: 401})
-        }
         
         await connectToDB();
 
@@ -56,12 +49,6 @@ export const DELETE = async(req: NextRequest, {params} : {params: {productId: st
 
 export const POST = async(req: NextRequest, {params} : {params: {productId: string}}) => {
     try {
-        const {userId} = auth();
-
-        if (!userId) {
-            return new NextResponse("Unauthorized", {status: 401})
-        }
-
         await connectToDB();
 
         const product = await Product.findById(params.productId);

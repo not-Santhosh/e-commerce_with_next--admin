@@ -1,4 +1,3 @@
-import { ClerkProvider } from '@clerk/nextjs'
 import '../globals.css'
 import { Metadata } from 'next'
 
@@ -17,7 +16,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
       <html lang="en">
         <body>
           <ToastProvider />
@@ -30,6 +28,5 @@ export default function RootLayout({
           </div>
         </body>
       </html>
-    </ClerkProvider>
   )
 }

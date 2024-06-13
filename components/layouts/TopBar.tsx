@@ -1,6 +1,5 @@
 "use client";
 
-import { UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import Link from 'next/link'
@@ -22,7 +21,6 @@ const TopBar = () => {
         })}
       </div>
       <div className='relative flex gap-4 items-center'>
-        <UserButton />  
         <Menu className='cursor-pointer md:hidden' onClick={() => setDropdownMenu(!dropdownMenu)} />
         {dropdownMenu &&
           <div className='absolute top-10 right-0 flex flex-col gap-8 p-5 bg-white rounded-lg'>
